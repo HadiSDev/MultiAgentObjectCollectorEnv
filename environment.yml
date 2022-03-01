@@ -6,10 +6,6 @@ channels:
 dependencies:
   - python=3.8
   - gym
-  - pytorch
-  - torchvision
-  - torchaudio
-  - cudatoolkit=11.3
   - cudnn=8.2.1
   - rtree
   - pip

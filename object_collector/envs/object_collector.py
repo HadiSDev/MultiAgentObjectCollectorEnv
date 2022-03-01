@@ -9,10 +9,9 @@ from object_collector.envs.AgentState import AgentState, Actions
 from object_collector.envs.MapState import MapState
 
 
-class ObjectCollectorEnv(gym.Env, EzPickle):
+class ObjectCollectorEnv(gym.Env):
 
     def __init__(self, map_size=(500, 500), n_objectives=11):
-        EzPickle.__init__(self)
         self.map_size = map_size
         self.map_state = MapState(self.map_size,
                                   n_objectives=n_objectives)
@@ -25,8 +24,8 @@ class ObjectCollectorEnv(gym.Env, EzPickle):
         # }
         self.observation_space = Box(shape=(100, 100, 3), low=0, high=1, dtype=np.uint8)
         self.action_space = Discrete(3)
-        self.step_penalty = 1
-        self.collection_reward = 10
+        self.step_penalty = 0
+        self.collection_reward = 1
         self.reward = 0
 
     def get_observation(self):
@@ -44,7 +43,7 @@ class ObjectCollectorEnv(gym.Env, EzPickle):
             collected = self.map_state.try_collect(self.agent)
             reward = collected * self.collection_reward - self.step_penalty
         else:
-            reward = -100
+            reward = 0
 
         done = False
         if self.map_state.all_objectives_collected():
