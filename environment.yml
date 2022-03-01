@@ -1,0 +1,28 @@
+name: oc-env
+channels:
+  - conda-forge
+  - defaults
+  - pytorch
+dependencies:
+  - python=3.8
+  - gym
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cudatoolkit=11.3
+  - cudnn=8.2.1
+  - rtree
+  - pip
+  - pip:
+    - tensorboard
+    - scikit-learn
+    - matplotlib
+    - opencv-python
+    - pygame
+    - shapely
+    - PyGLM
+    - pettingzoo
+    - six
+    - cffi
+    - keyboard
+    - poetry
